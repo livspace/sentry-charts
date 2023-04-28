@@ -392,7 +392,11 @@ data:
                 {{- if .Values.sentry.features.vstsLimitedScopes }}
                 "organizations:integrations-vsts-limited-scopes",
                 {{ end -}}
-
+                {{- if .Values.sentry.features.performance | default "true" }}
+                "organizations:performance-view",
+                "organizations:performance-frontend-use-events-endpoint",
+                "organizations:release-performance-views",
+                {{ end -}}
                 "organizations:integrations-stacktrace-link",
                 "organizations:internal-catchall",
                 "organizations:invite-members",
@@ -400,11 +404,8 @@ data:
                 "organizations:monitors",
                 "organizations:onboarding",
                 "organizations:org-saved-searches",
-                "organizations:performance-view",
-                "organizations:performance-frontend-use-events-endpoint",
                 "organizations:project-detail",
                 "organizations:relay",
-                "organizations:release-performance-views",
                 "organizations:rule-page",
                 "organizations:set-grouping-config",
                 "organizations:custom-event-title",
